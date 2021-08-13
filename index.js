@@ -1,5 +1,3 @@
-// const contactsArr = require("./db/contacts.json");
-// const contacts = require("./contacts");
 const {
   listContacts,
   getContactById,
@@ -9,6 +7,3 @@ const {
 } = require("./contacts");
 
 const app = require("./app");
-/* module.exports = {
-  contacts,
-}; */

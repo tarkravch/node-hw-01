@@ -1,24 +1,17 @@
 const fs = require("fs").promises;
 const { v4 } = require("uuid");
-/* const path = require("path");
-const contactsPath = path.join(__dirname, "contacts.json"); */
 
 const listOfContacts = require("./db/filePath");
-
-// console.log(listOfContacts);
 
 async function listContacts() {
   try {
     const data = await fs.readFile(listOfContacts);
     const contacts = JSON.parse(data);
-    // console.log(contacts);
     return contacts;
   } catch (error) {
     console.log(error.message);
   }
 }
-
-// listContacts();
 
 async function getContactById(contactId) {
   try {
@@ -43,9 +36,8 @@ async function removeContact(contactId) {
       throw new Error(`Contact with id=${contactId} not found`);
     }
     const newPersons = data.filter((person) => person.id !== contactId);
-    // const delProduct = products.splice(idx, 1);
+
     await updateContacts(newPersons);
-    // return data[idx];
   } catch (error) {
     console.log(error.message);
   }
@@ -57,7 +49,6 @@ async function addContact(data) {
   try {
     const contacts = await listContacts();
     const newContact = { ...data, id: v4() };
-    // const newProducts = [...products, newProduct];
     contacts.push(newContact);
     await updateContacts(contacts);
     return newContact;

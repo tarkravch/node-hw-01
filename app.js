@@ -27,8 +27,6 @@ async function invokeAction({ action, id, name, email, phone }) {
       if (id) {
         const contact = listOfContacts.find((person) => person.id === +id);
         console.log(contact);
-
-        // return contact;
       } else {
         console.log("id не указан");
       }
@@ -42,7 +40,6 @@ async function invokeAction({ action, id, name, email, phone }) {
       } else {
         console.log("your contact is not filled in properly");
       }
-
       break;
 
     case "remove":
@@ -54,7 +51,6 @@ async function invokeAction({ action, id, name, email, phone }) {
         const newPersons = listOfContacts.filter((person) => person.id !== +id);
         await updateContacts(newPersons);
       }
-
       break;
 
     default:
